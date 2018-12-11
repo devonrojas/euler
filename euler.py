@@ -42,28 +42,29 @@ def euler(x0, y0, h, xn):
     """
     x_arr = []
     y_arr = []
+    err_arr = [0]
     ### Euler algorithm
     n = int((xn - x0)/h + 1)
     x_arr.append(x0)
     y_arr.append(y0)
-    print('\nX\tY\n-----------')
+    print('\nX\tY\tError\n-----------')
     for i in range(0,n):
         res = eq.subs([(x, x0), (y, y0)])
         y_temp = y0 + h * res
         x_temp = x0 + h
-        print('%.2f\t%.2f' % (x0, y0))
+        print('%.2f\t%.2f\t%.3f' % (x0, y0, res-y0))
         if x_temp <= xn:
             x0 = x_temp
             y0 = y_temp
             x_arr.append(x0)
             y_arr.append(y0)
+            err_arr.append(res-y0)
         else:
             break
     ### Graph resulting euler data & original function
-    fig, ax = plt.subplots(1, 1)
-    graph(ax, x_arr, y_arr, n)
+    graph(x_arr, y_arr, n, err_arr)
 
-def graph(ax, x, y, n):
+def graph(x, y, n, err):
     """
     Helper function to graph data
 
@@ -80,10 +81,10 @@ def graph(ax, x, y, n):
 
     Returns:
     -------------
-    out : list
+    ax : list
         List of artists added
     """
-    out = ax.plot(x, y, marker="o", label="Euler")
+    ax = plt.plot(x, y, marker="o", label="Euler")
 
     ### Plot original function over same interval
     _x = np.linspace(0, xn, 100)
@@ -91,9 +92,10 @@ def graph(ax, x, y, n):
     for i in _x:
         res = eq.subs('x', i)
         _y.append(res)
-    out = ax.plot(_x, _y, label="Original")
-
-    return out
+    ax = plt.plot(_x, _y, label="Original")
+    ax = plt.plot(x, err, label="Error")
+    plt.legend()
+    return ax
 
 ### Parse input into function
 eq = sympify(input("Enter an equation: "))
@@ -106,5 +108,5 @@ xn = int(input("Enter ending value: "))
 euler(x0, y0, h, xn)
 
 ### Display plot graph
-plt.legend()
+plt.grid()
 plt.show()
