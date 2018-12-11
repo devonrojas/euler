@@ -44,12 +44,15 @@ def euler(x0, y0, h, xn):
     y_arr = []
     ### Euler algorithm
     n = int((xn - x0)/h + 1)
-    for i in range(1,n):
+    x_arr.append(x0)
+    y_arr.append(y0)
+    print('\nX\tY\n-----------')
+    for i in range(0,n):
         res = eq.subs([(x, x0), (y, y0)])
         y_temp = y0 + h * res
         x_temp = x0 + h
-        print(x0, y0)
-        if x_temp < xn:
+        print('%.2f\t%.2f' % (x0, y0))
+        if x_temp <= xn:
             x0 = x_temp
             y0 = y_temp
             x_arr.append(x0)
@@ -83,14 +86,17 @@ def graph(ax, x, y, n):
     out = ax.plot(x, y, marker="o", label="Euler")
 
     ### Plot original function over same interval
-    _x = np.linspace(0, xn, n)
-    out = ax.plot(_x, _x**3, marker="o", label="Original")
+    _x = np.linspace(0, xn, 100)
+    _y = []
+    for i in _x:
+        res = eq.subs('x', i)
+        _y.append(res)
+    out = ax.plot(_x, _y, label="Original")
 
     return out
 
 ### Parse input into function
 eq = sympify(input("Enter an equation: "))
-print(eq)
 
 x0 = int(input("Enter initial x value: "))
 y0 = int(input("Enter initial y value: "))
