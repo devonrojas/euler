@@ -6,8 +6,9 @@ Differential Equations
 December 12th, 2018
 
 **Summary:**
-The objective was to create a simple program to demonstrate Euler's Method for a first-order ordinary\n
-differential equation. I created this using Python. The program takes user input for the initial x and y values, the step size, and the ending x value.
+
+
+The objective was to create a simple program to demonstrate Euler's Method for a first-order ordinary differential equation. I created this using Python. The program takes user input for the initial x and y values, the step size, and the ending x value.
 
 It then follows the algorithm for Euler's method, as defined below:
 ```
