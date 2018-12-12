@@ -1,8 +1,12 @@
 # Euler's Method
 Basic Euler's Method program for Math 255 (Differential Equations)
+
 Euler's Method program for First-order Ordinary Differential Equations
+
 By: Devon Rojas
+
 Differential Equations
+
 December 12th, 2018
 
 **Summary:**
