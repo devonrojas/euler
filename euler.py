@@ -42,11 +42,12 @@ def euler(x0, y0, h, xn):
     """
     x_arr = []
     y_arr = []
-    err_arr = [0]
+    err_arr = []
     ### Euler algorithm
     n = int((xn - x0)/h + 1)
     x_arr.append(x0)
     y_arr.append(y0)
+    err_arr.append(y0)
     print('\nX\tY\tError\n-----------')
     for i in range(0,n):
         res = eq.subs([(x, x0), (y, y0)])

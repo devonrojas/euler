@@ -1,7 +1,7 @@
 # Euler's Method
 Basic Euler's Method program for Math 255 (Differential Equations)
 
-Euler's Method program for First-order Ordinary Differential Equations
+Euler's Method program for Ordinary Differential Equations
 
 By: Devon Rojas
 
@@ -12,9 +12,9 @@ December 12th, 2018
 **Summary:**
 
 
-The objective was to create a simple program to demonstrate Euler's Method for a first-order ordinary differential equation. I created this using Python. The program takes user input for the initial x and y values, the step size, and the ending x value.
+The objective was to create a simple program to demonstrate Euler's Method for an ordinary differential equation. It was created using Python.
 
-It then follows the algorithm for Euler's method, as defined below:
+The program follows the algorithm for Euler's method, as defined below:
 ```
 Step 1: define f(x)
 Step 2: input initial values x and y
@@ -27,4 +27,8 @@ Step 6: k = f(x)
 Step 7: output x and y values
 Step 8: end
 ```
+
+In addition, the program also presents the user with a plot of the results of Euler's method, the evaluated original function, and the global truncation error between them.
+
+
 Example Output:
